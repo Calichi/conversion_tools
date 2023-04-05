@@ -56,9 +56,11 @@ public class NameList extends JComboBox<String> {
     this.setModel(DATA.toArray(String[]::new));
   }
 
-  public String getCurrencyName() {
-    if(!DATA.contains(this.getEditor().getItem()))
+  public String getCurrencyName() throws IllegalArgumentException {
+    if(!DATA.contains(this.getEditor().getItem())) {
       this.setSelectedItem(this.defaultCurrencyName);
+      throw new IllegalArgumentException("Verifique ");
+    }
 
     return (String)this.getSelectedItem();
   }
